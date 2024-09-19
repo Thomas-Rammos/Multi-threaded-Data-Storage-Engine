@@ -10,18 +10,16 @@ The storage engine manages data using an in-memory data structure (memtable) and
 - Concurrency: Multiple threads can perform read and write operations concurrently, with synchronization mechanisms ensuring consistency.
 - Performance Measurements: Execution times for the add and get operations are tracked, and the system supports both random and sequential key access patterns.
 
-  # Usage
-  To use the multi-threaded data storage engine, compile the provided source code and run the kiwi-bench executable with different command-line options.
-
-  # Example Commands:
-    - ./kiwi-bench write <count>: Perform count write operations.
-    - ./kiwi-bench read <count>: Perform count read operations.
-    - ./kiwi-bench readwrite <count> <threads> <percentage>: Perform both read and write operations with the specified number of threads and a percentage of write operations.
-
-
 # Implementation Details
 The key functions and components of the system include:
 - Memtable: An in-memory sorted data structure (skiplist) used to store key-value pairs before flushing them to disk.
 - SST: Sorted String Tables stored on disk after flushing the memtable.
 - Thread Management: Utilizes Pthreads for creating multiple threads, ensuring thread-safe operations using locks and condition variables.
 - Performance Metrics: Tracks the time taken for each operation and reports statistics on the number of operations performed and the time per operation.
+
+# How to Use
+ To use the multi-threaded data storage engine, compile the provided source code and run the kiwi-bench executable with different command-line options.
+# Example Commands:
+    - ./kiwi-bench write <count>: Perform count write operations.
+    - ./kiwi-bench read <count>: Perform count read operations.
+    - ./kiwi-bench readwrite <count> <threads> <percentage>: Perform both read and write operations with the specified number of threads and a percentage of write operations.
